@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>TravelX | Premium Travel Experience</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+
+body{
+scroll-behavior:smooth;
+font-family:"Segoe UI",sans-serif;
+}
+
+/* Hero */
+
+.hero{
+background:
+linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+url("Lazy3.jpg");
+
+background-size:cover;
+background-position:center;
+height:90vh;
+color:white;
+display:flex;
+align-items:center;
+}
+
+.hero h1{
+font-size:3.5rem;
+}
+
+/* Cards */
+
+.card{
+border:none;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+/* Destination */
+
+.dest-card{
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+transition:.4s;
+}
+
+.dest-card:hover{
+transform:scale(1.03);
+}
+
+.dest-card img{
+height:260px;
+object-fit:cover;
+}
+
+/* Button */
+
+.btn-premium{
+background:linear-gradient(45deg,#d4af37,#ffd700);
+border:none;
+border-radius:30px;
+padding:8px 22px;
+font-weight:600;
+}
+
+/* Footer */
+
+footer{
+background:#111;
+color:white;
+padding:30px;
+}
+
+</style>
+
+</head>
+
+
+<body data-bs-spy="scroll" data-bs-target="#mainNav">
+
+
+<!-- Navbar -->
+
+<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+<div class="container">
+
+<a class="navbar-brand fw-bold" href="#home">TravelX</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="#home">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#dest">Destinations</a>
+</li>
+
+<li class="nav-item dropdown">
+
+<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+Services
+</a>
+
+<ul class="dropdown-menu">
+
+<li><a class="dropdown-item" href="#">Flights</a></li>
+<li><a class="dropdown-item" href="#">Hotels</a></li>
+<li><a class="dropdown-item" href="#">Tours</a></li>
+
+</ul>
+
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#contact">Contact</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+
+<!-- Hero -->
+
+<section id="home" class="hero">
+
+<div class="container text-center">
+
+<h1 class="fw-bold">Explore The World in Luxury</h1>
+
+<p class="lead">Premium Travel | Trusted Service | Best Price</p>
+
+<button class="btn btn-warning btn-lg"
+data-bs-toggle="modal"
+data-bs-target="#bookModal">
+
+Book Now
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- Alert -->
+
+<div class="container mt-4">
+
+<div class="alert alert-success alert-dismissible fade show">
+
+🎉 Special Offer: Get 30% OFF on Europe Tour!
+
+<button class="btn-close" data-bs-dismiss="alert"></button>
+
+</div>
+
+</div>
+
+
+<!-- Carousel (3s Auto Infinite) -->
+
+<section class="container my-5">
+
+<div id="travelSlider"
+class="carousel slide"
+data-bs-ride="carousel"
+data-bs-interval="3000"
+data-bs-wrap="true">
+
+<div class="carousel-inner rounded-4">
+
+<div class="carousel-item active">
+<img src="lazy.jpg" class="w-100" height="450">
+</div>
+
+<div class="carousel-item">
+<img src="lazy2.jpg" class="w-100" height="450">
+</div>
+
+<div class="carousel-item">
+<img src="lazy3.jpg" class="w-100" height="450">
+</div>
+
+</div>
+
+<button class="carousel-control-prev"
+data-bs-target="#travelSlider"
+data-bs-slide="prev">
+
+<span class="carousel-control-prev-icon"></span>
+
+</button>
+
+<button class="carousel-control-next"
+data-bs-target="#travelSlider"
+data-bs-slide="next">
+
+<span class="carousel-control-next-icon"></span>
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- Destinations -->
+
+<section id="dest" class="container my-5">
+
+<h2 class="text-center fw-bold">Popular Destinations</h2>
+
+<p class="text-center text-muted mb-5">
+Explore World Class Premium Locations
+</p>
+
+<div id="destContainer" class="row g-4"></div>
+
+</section>
+
+
+<!-- Destination Modal -->
+
+<div class="modal fade" id="destModal">
+
+<div class="modal-dialog modal-xl modal-dialog-centered">
+
+<div class="modal-content">
+
+<div class="modal-header bg-dark text-white">
+
+<h5 id="destTitle"></h5>
+
+<button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+
+</div>
+
+
+<div class="modal-body text-center">
+
+<img id="destImg" class="img-fluid rounded mb-3">
+
+<p id="destDesc"></p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Contact -->
+
+<section id="contact" class="container my-5">
+
+<h2 class="text-center mb-4">Contact Us</h2>
+
+<div class="row justify-content-center">
+
+<div class="col-md-6">
+
+<input type="text" id="search"
+class="form-control mb-3"
+placeholder="Search destination...">
+
+<form>
+
+<input type="text" class="form-control mb-3"
+placeholder="Name">
+
+<input type="email" class="form-control mb-3"
+placeholder="Email">
+
+<textarea class="form-control mb-3"
+placeholder="Message"></textarea>
+
+<button class="btn btn-dark w-100"
+id="sendBtn" type="button">
+
+Send Message
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- Footer -->
+
+<footer class="text-center">
+
+<p>© 2026 TravelX | Premium Travel Agency</p>
+
+</footer>
+
+
+<!-- Booking Modal -->
+
+<div class="modal fade" id="bookModal">
+
+<div class="modal-dialog modal-lg">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5>Book Your Trip</h5>
+
+<button class="btn-close" data-bs-dismiss="modal"></button>
+
+</div>
+
+
+<div class="modal-body">
+
+<div id="successMsg" class="alert alert-success d-none">
+
+✅ Booking Successful!
+
+</div>
+
+
+<form id="bookForm">
+
+<div class="row g-3">
+
+<div class="col-md-6">
+<input id="bname" class="form-control" placeholder="Name">
+</div>
+
+<div class="col-md-6">
+<input id="bemail" class="form-control" placeholder="Email">
+</div>
+
+<div class="col-md-6">
+<input id="bphone" class="form-control" placeholder="Mobile">
+</div>
+
+<div class="col-md-6">
+
+<select id="bdest" class="form-control">
+
+<option value="">Select Destination</option>
+<option>Dubai</option>
+<option>Paris</option>
+<option>Maldives</option>
+<option>London</option>
+<option>New York</option>
+<option>Tokyo</option>
+<option>Singapore</option>
+<option>Bali</option>
+<option>Rome</option>
+<option>Switzerland</option>
+<option>Thailand</option>
+<option>Goa</option>
+<option>Kerala</option>
+<option>Manali</option>
+<option>Kashmir</option>
+
+</select>
+
+</div>
+
+<div class="col-12">
+
+<textarea class="form-control"
+placeholder="Message"></textarea>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+
+<div class="modal-footer">
+
+<button id="clearBtn" class="btn btn-secondary">
+Clear
+</button>
+
+<button id="submitBtn" class="btn btn-success">
+Submit
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* 15 Destinations */
+
+const destinations=[
+
+{name:"Dubai",img:"Dubai.jpg",desc:"Dubai is a luxury city famous for skyscrapers, Burj Khalifa, desert safari, shopping malls, beaches, nightlife, adventure sports, world-class hotels, fine dining and modern lifestyle."},
+
+{name:"Paris",img:"Paris.jpg",desc:"Paris is the city of love known for Eiffel Tower, museums, art galleries, fashion streets, romantic cafes, historical buildings, fine dining, river cruises and rich culture."},
+
+{name:"Maldives",img:"Maldives.jpg",desc:"Maldives is famous for crystal clear water, private villas, coral reefs, snorkeling, scuba diving, luxury resorts, honeymoon trips, peaceful environment and sunset views."},
+
+{name:"London",img:"London.jpg",desc:"London is a historic city with Big Ben, London Eye, royal palaces, museums, shopping streets, cultural diversity, modern lifestyle, theatres and iconic bridges."},
+
+{name:"New York",img:"New York.jpg",desc:"New York is known for Times Square, skyscrapers, Broadway shows, Central Park, shopping hubs, finance center, nightlife, cultural diversity and global influence."},
+
+{name:"Tokyo",img:"Tokyo.jpg",desc:"Tokyo blends tradition and technology with temples, anime culture, robotics, food streets, shopping zones, clean roads, discipline and innovative lifestyle."},
+
+{name:"Singapore",img:"Singapore.jpg",desc:"Singapore is a modern city famous for Marina Bay, Sentosa Island, clean streets, shopping malls, gardens, food courts, smart transport and safety."},
+
+{name:"Bali",img:"Bali.jpg",desc:"Bali is a tropical island with beaches, temples, waterfalls, yoga retreats, rice fields, cultural festivals, nightlife, resorts and honeymoon spots."},
+
+{name:"Rome",img:"Rome.jpg",desc:"Rome is a historic city known for Colosseum, ancient monuments, art museums, churches, Italian cuisine, rich civilization and architectural beauty."},
+
+{name:"Switzerland",img:"Switzerland.jpeg",desc:"Switzerland is famous for snow mountains, lakes, scenic trains, chocolates, adventure sports, peaceful towns, clean environment and luxury tourism."},
+
+{name:"Thailand",img:"Thailand.jpg",desc:"Thailand is known for beaches, nightlife, temples, street food, massage centers, floating markets, shopping streets, islands and budget tourism."},
+
+{name:"Goa",img:"Goa.jpg",desc:"Goa is India’s beach paradise famous for parties, churches, seafood, sunset views, water sports, relaxed lifestyle, cafes and music festivals."},
+
+{name:"Kerala",img:"Kerala.jpg",desc:"Kerala is called God’s Own Country with backwaters, greenery, Ayurveda therapy, houseboats, hills, wildlife, rich traditions and calm environment."},
+
+{name:"Manali",img:"Manali.jpg",desc:"Manali is a hill station with snow mountains, rivers, adventure sports, trekking routes, honeymoon spots, scenic valleys and cool climate."},
+
+{name:"Kashmir",img:"kashmir.jpg",desc:"Kashmir is Heaven on Earth known for lakes, gardens, mountains, snowfall, houseboats, handicrafts, apple orchards and natural beauty."}
+
+];
+
+
+/* Cards */
+
+let html="";
+
+destinations.forEach((d,i)=>{
+
+html+=`
+
+<div class="col-lg-4 col-md-6">
+
+<div class="card dest-card h-100">
+
+<img src="${d.img}" class="card-img-top">
+
+<div class="card-body text-center d-flex flex-column p-4">
+
+<h4 class="fw-bold mb-3">${d.name}</h4>
+
+<button class="btn btn-premium mt-auto"
+onclick="showDest(${i})">
+
+Read More
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+$("#destContainer").html(html);
+
+
+/* Modal */
+
+function showDest(i){
+
+$("#destTitle").text(destinations[i].name);
+
+$("#destImg").attr("src",destinations[i].img);
+
+$("#destDesc").text(destinations[i].desc);
+
+new bootstrap.Modal("#destModal").show();
+
+}
+
+
+/* Contact Button */
+
+$("#sendBtn").click(function(){
+
+$(this).text("Sending...");
+
+setTimeout(()=>{
+
+$(this).text("Message Sent ✔")
+.removeClass("btn-dark")
+.addClass("btn-success");
+
+},1500);
+
+});
+
+
+/* Booking */
+
+$("#submitBtn").prop("disabled",true);
+
+
+$("#bookForm input,#bookForm select").on("input",function(){
+
+if(
+$("#bname").val() &&
+$("#bemail").val() &&
+$("#bphone").val() &&
+$("#bdest").val()
+){
+$("#submitBtn").prop("disabled",false);
+}
+else{
+$("#submitBtn").prop("disabled",true);
+}
+
+});
+
+
+$("#submitBtn").click(function(){
+
+$(this).text("Processing...");
+
+setTimeout(()=>{
+
+$("#successMsg").removeClass("d-none");
+
+$(this).text("Submitted ✔");
+
+},1200);
+
+});
+
+
+$("#clearBtn").click(function(){
+
+$("#bookForm")[0].reset();
+
+$("#successMsg").addClass("d-none");
+
+$("#submitBtn").text("Submit").prop("disabled",true);
+
+});
+
+</script>
+
+
+</body>
+</html>
